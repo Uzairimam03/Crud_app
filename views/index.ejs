@@ -1,0 +1,58 @@
+<%- include('layout/header') %>
+
+<div class="container">
+  <% if (message) { %>
+  <div class="alert alert-<%= message.type %>"><%= message.message %></div>
+  <% } %>
+
+  <div class="row my-5">
+    <div class="col-lg-12">
+      <div class="col-lg-7 mx-auto mt-3 px-2">
+        <% if (users && users.length > 0) { %>
+        <!-- Check if users array exists and has elements -->
+        <table class="table table-striped text-center my-3">
+          <thead>
+            <tr class="table-dark">
+              <th>ID</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach((row, index) => { %>
+            <!-- Loop through the users array -->
+            <tr class="align-middle">
+              <td><%= index + 1 %></td>
+              <!-- Use <%= %> to render the value -->
+              <td>
+                <img src="<%= row.image %>" width="50" class="img-thumbnail" />
+              </td>
+              <td><%= row.name %></td>
+              <td><%= row.email %></td>
+              <td><%= row.phone %></td>
+              <td>
+                <!-- Add actions here (e.g., edit, delete) -->
+                <a href="/edit/<%= row._id %>" class="btn btn-sm btn-warning"
+                  >Edit</a
+                >
+                <a href="/delete/<%= row._id %>" class="btn btn-sm btn-danger"
+                  >Delete</a
+                >
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <% } else { %>
+        <p class="text-center">No users found.</p>
+        <!-- Fallback message if no users exist -->
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('layout/footer') %>
