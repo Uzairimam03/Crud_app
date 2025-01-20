@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const multer = require('multer');
 const fs = require('fs');
+const serverless = require('serverless-http')
 
 
 
@@ -25,6 +26,7 @@ var upload = multer({
 // Insert a user into database route
 router.post('/add', upload, async (req, res) => {
     try {
+        // Todo: Add Validation
         // Create a new user object
         const user = new User({
             name: req.body.name,

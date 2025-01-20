@@ -6,6 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+
 //database connection
 mongoose.connect(process.env.DB_URI,)
 .then(() => {
@@ -32,7 +33,7 @@ mongoose.connect(process.env.DB_URI,)
   });
   app.use('/', require('./routes/routes'));
   app.use(express.static('uploads'))
-
+ 
   //set template engine
 
   app.set('view engine', 'ejs');
