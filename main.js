@@ -17,6 +17,7 @@ mongoose.connect(process.env.DB_URI,)
   });
    
   //middlewares
+  app.use(express.static('public'));
   app.use(express.urlencoded({extended:false}))
   app.use(express.json());
   app.use(express.static(path.join(__dirname, 'public')));
