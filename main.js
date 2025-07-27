@@ -1,14 +1,18 @@
-require("dotenv").config();
+const dotenv = require('dotenv')
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const path = require('path');
 const app = express();
+
+dotenv.config();
 const PORT = process.env.PORT || 4000;
 
 
 //database connection
-mongoose.connect(process.env.DB_URI,)
+
+mongoose.connect(process.env.MONGO_URI, )
+  
 .then(() => {
     console.log('Database connected successfully');
   })
